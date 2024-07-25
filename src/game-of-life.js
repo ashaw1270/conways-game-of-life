@@ -115,9 +115,9 @@ function saveGenerations(generations, name) {
 }
 
 // Simulates a number of generations of the game of life starting from the coordinates contained in the specified file
-async function simulateFromFile(configName, numGenerations) {
+async function simulateFromFile(filename, numGenerations) {
     try {
-        const response = await fetch(`../starting-configs/${configName}.json`);
+        const response = await fetch(filename);
         if (!response.ok) {
             throw new Error('File not found');
         }
