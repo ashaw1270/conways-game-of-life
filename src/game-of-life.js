@@ -5,8 +5,7 @@ function arrayContains(coords, row, col) {
     return coords.some(loc => loc[0] === row && loc[1] === col);
 }
 
-// Helper function to convert a list of centered coordinates
-// (centered around (0, 0) with negative values for left and up)
+// Helper function to convert a list of centered coordinates (centered around (0, 0) with negative values for left and up)
 // to a rectangular array with (0, 0) in the top left and all positive coordinate values.
 // This new array contains booleans, with true representing a live cell and false representing a dead one
 function coordinatesToGrid(centeredCoords) {
@@ -50,10 +49,10 @@ function numNeighbors(centeredCoords, row, col) {
 }
 
 // Calculates the next generation of the game of life according to Conway's rules:
-// 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
-// 2. Any live cell with two or three live neighbors lives on to the next generation.
-// 3. Any live cell with more than three live neighbors dies, as if by overpopulation.
-// 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+// 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation
+// 2. Any live cell with two or three live neighbors lives on to the next generation
+// 3. Any live cell with more than three live neighbors dies, as if by overpopulation
+// 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction
 function nextGeneration(centeredCoords) {
     const rowValues = centeredCoords.map(loc => loc[0]);
     const colValues = centeredCoords.map(loc => loc[1]);
@@ -79,8 +78,7 @@ function nextGeneration(centeredCoords) {
     return output;
 }
 
-// Simulates a number of generations of the game of life starting from a 
-// given set of coordinates of live cells
+// Simulates a number of generations of the game of life starting from a given set of coordinates of live cells
 function simulateGenerations(startingCoordinates, numGenerations) {
     const output = [coordinatesToGrid(startingCoordinates)];
     let currentGeneration = startingCoordinates;
@@ -116,8 +114,7 @@ function saveGenerations(generations, name) {
     document.body.removeChild(link);
 }
 
-// Simulates a number of generations of the game of life starting from the coordinates
-// described in the specified file
+// Simulates a number of generations of the game of life starting from the coordinates contained in the specified file
 async function simulateFromFile(configName, numGenerations) {
     try {
         const response = await fetch(`../starting-configs/${configName}.json`);
